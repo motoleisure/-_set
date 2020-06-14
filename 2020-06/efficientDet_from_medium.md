@@ -16,4 +16,9 @@
 
 - 这篇论文主要是在一系列的资源限制中建立了一个可拓展的，高精度和高效率的检测器架构。(譬如，从3B到300B FLOPS). 它主要尝试解决以下2个方面的挑战：
   - (1). **Efficient multi-scale feature fusion, 高效的多尺度特征融合**, FPN, 特征金字塔已经成为了融合多尺度特征的主要方法。一些用到FPN的检测器包括： RetinaNet, PANet, NAS-FPN等等。大多数适应这些检测器的融合策略在进行融合时都没有考虑到filters的重要性。他们毫无分别的堆叠它们。实际上，并不是所有的特征对输出特征有同等的贡献的。所以，我们需要一个更好的融合测率。
-  - (2). **Model Scaling， 模型缩放**，前人的大多数工作都是使得backbone更大，以得到更好的精度。论文作者发现增大特征网络和box/class预测网络
+  - (2). **Model Scaling， 模型缩放**，前人的大多数工作都是使得backbone更大，以得到更好的精度。论文作者发现在同时关注精度和速度的同时增大特征网络和box/class预测网络也显得尤为重要。受[**compound scaling in EfficientNets**](https://medium.com/@nainaakash012/efficientnet-rethinking-model-scaling-for-convolutional-neural-networks-92941c5bfb95)的启发，作者提出了一个目标检测器的混合缩放方法，它是通过联合增大所有backbone，特征网络，box/class预测网络的分辨率，深度和宽度。
+  
+- 让我们逐个点逐个点来具体分析，从而更好的理解这边论文吧。
+
+### 特征金字塔网络(FPNs)
+- 在讨论特征金字塔之前，我们先来回顾一下FPN的思路和讨论一下它的优缺点。尽管FPN并不是一个新东西，最先提出在deep CNN中利用深层多尺度堆叠的特征金字塔是2017年的这篇[**论文**](https://zpascal.net/cvpr2017/Lin_Feature_Pyramid_Networks_CVPR_2017_paper.pdf)。
