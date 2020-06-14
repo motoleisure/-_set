@@ -22,3 +22,5 @@
 
 ### 特征金字塔网络(FPNs)
 - 在讨论特征金字塔之前，我们先来回顾一下FPN的思路和讨论一下它的优缺点。尽管FPN并不是一个新东西，最先提出在deep CNN中利用深层多尺度堆叠的特征金字塔是2017年的这篇[**论文**](https://zpascal.net/cvpr2017/Lin_Feature_Pyramid_Networks_CVPR_2017_paper.pdf)。
+
+- ![Figure1. Feature Pyramid Network](../asserts/EfficientDet/FPN.png)
