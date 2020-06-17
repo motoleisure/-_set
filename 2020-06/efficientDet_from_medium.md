@@ -43,6 +43,7 @@
 
 ### BiFPN
 - 如果我们讨论如何修改FPNs，那么直接使用它肯定是有缺点的。我们举个例子来详细说明它吧。
+- ![Figure2. Feature Network Design](../asserts/EfficientDet/BiFPN.png)
 
 
 
