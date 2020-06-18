@@ -68,7 +68,7 @@
 
 #### Softmat-based Fusion，基于softmax的融合
 - ![](../asserts/EfficientDet/soft-fu.png)
-
+- 如果我们想要把无边界的权重控制在有边界的[0, 1]的范围里，其中一个最好的方法是应用softmax函数，把权重映射成一个概率分布[0, 1]，它的大小就表示权重的重要性。
 
 
 
