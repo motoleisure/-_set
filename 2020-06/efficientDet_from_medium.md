@@ -84,7 +84,7 @@
 - 之前提到的**compounding scaling**在这里也使用了。他联合地缩放了所有的东西，包括backbone网络，BiFPNs和box/class predictors。这听起来像是一个非常复杂的方法。
 
 #### Compound Scaling
-
+- 在EfficientNets中我们看到，scaling所有的维度可以得到更好的表现。我们想要在我们的EfficientDet家族模型中也这么做。物体检测之前的工作只是在backbone网络或者FPN层上做缩放来提高精度。这是非常限制的，如果我们只是关注检测器上的一个维度。作者为检测器提出了一个新的compound scaling（混合缩放）方法，它是用一个简单的复合系数(compound coefficient)来联合缩放backbone网络，BiFPN网络，class/box网络和分辨率上的所有维度。
 
 
 
