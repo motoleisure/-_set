@@ -68,7 +68,14 @@
 
 #### Softmat-based Fusion，基于softmax的融合
 - ![](../asserts/EfficientDet/soft-fu.png)
-- 如果我们想要把无边界的权重控制在有边界的[0, 1]的范围里，其中一个最好的方法是应用softmax函数，把权重映射成一个概率分布[0, 1]，它的大小就表示权重的重要性。
+- 如果我们想要把无边界的权重控制在有边界的[0, 1]的范围里，其中一个最好的方法是应用softmax函数，把权重映射成一个概率分布[0, 1]，它的大小就表示权重的重要性。这样做的缺点是softmax函数是计算开销很大的，会增加网络的延迟性。
+
+#### Fast Normalized Fusion, 快速归一化融合
+- ![](../asserts/EfficientDet/fast-nor-fu.png)
+- 我们想要我们的权重在[0, 1]范围之内。其中一个方法保证Wi >= 0就是应用ReLU函数。现在我们能够简单的归一化数值的上限边界是1。这个方法是及其简单和有效的，相对与softmax函数的方法而言。
+
+### EfficientDet
+
 
 
 
