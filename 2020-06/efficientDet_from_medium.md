@@ -81,7 +81,10 @@
 #### Architecture, 架构
 - EfficientDet检测器是一个single-shot的检测器，和SSD和RetinaNet非常像。backbone网络是在ImageNet上的预训练EfficientNets。提出的BiFPN作为一个特征网络，它在backbone网络的level 3-7特征层{P3, P4, P5, P6, P7}上重复应用top-down和bottom-up双向特征融合。这些融合的特征被喂到class/box网络，然后分别产生物体类别(class)和预测框(bounding box predictions)。class和box网络的权重是所有level层特征共享的。
 
-- 之前提到的**compounding scaling**在这里也使用了。
+- 之前提到的**compounding scaling**在这里也使用了。他联合地缩放了所有的东西，包括backbone网络，BiFPNs和box/class predictors。这听起来像是一个非常复杂的方法。
+
+#### Compound Scaling
+
 
 
 
