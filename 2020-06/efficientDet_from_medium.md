@@ -75,7 +75,8 @@
 - 我们想要我们的权重在[0, 1]范围之内。其中一个方法保证Wi >= 0就是应用ReLU函数。现在我们能够简单的归一化数值的上限边界是1。这个方法是及其简单和有效的，相对与softmax函数的方法而言。
 
 ### EfficientDet
-
+- 如它的名字所示，是用EfficientNets做为backbone网络，其中插入BiFPNs，我们得到一个新的检测器家族，
+- ![](../asserts/EfficientDet/efdet.png)
 
 
 
