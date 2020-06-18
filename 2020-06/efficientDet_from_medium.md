@@ -86,7 +86,14 @@
 #### Compound Scaling
 - 在EfficientNets中我们看到，scaling所有的维度可以得到更好的表现。我们想要在我们的EfficientDet家族模型中也这么做。物体检测之前的工作只是在backbone网络或者FPN层上做缩放来提高精度。这是非常限制的，如果我们只是关注检测器上的一个维度。作者为检测器提出了一个新的compound scaling（混合缩放）方法，它是用一个简单的复合系数(compound coefficient)来联合缩放backbone网络，BiFPN网络，class/box网络和分辨率上的所有维度。
 
+- 目标检测器比图像分类模型有更多的缩放维度，所以grid search多所有维度来说是非常耗时的。所以，作者使用了一个基于启发的缩放方法，但是，按照以下的主要思想来联合缩放所有维度。
+  - (1). **Backbone network**，EfficientNet-B0-B6中使用了相同的宽度/深度缩放系数，所以可以使用ImageNet预训练的checkpoints。
+  - (2). **BiFPN Network**, 作者在EfficientNets中指数增长BiFPN的宽度(#channels)，但是在深度(#layers)上只是线性增长，因为深度需要四舍五入到比较小的整数。
+  - ![](../asserts/EfficientDet/bifpn.png)
+  - (3). **Box/class prediction network**，宽度是和BiFPN保持一致，但是深度是线性增加的。
+  - ![](../asserts/EfficientDet/box-class.png)
+  - (4). **Input image resolution**, 由于特征level 3-7是用在BiFPN中，输入的分辨率必须是能够被2^7=128整除，所以我们使用线性公式增加分辨率
+  - ![](../asserts/EfficientDet/input-res.png)
 
-
-
+- 现在，使用等式(1),(2)和(3)，不同的系数值Φ
 
